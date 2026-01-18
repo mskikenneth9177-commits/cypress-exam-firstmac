@@ -1,4 +1,3 @@
-// cypress/e2e/shadowAndNested.spec.ts
 
 import { ShadowDomPage } from '../pages/ShadowDomPage'
 import { NestedFramesPage } from '../pages/NestedFramesPage'

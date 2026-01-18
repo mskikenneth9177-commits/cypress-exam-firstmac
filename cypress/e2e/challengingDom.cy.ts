@@ -1,4 +1,4 @@
-describe('Dynamic Controls – Guard-Based Async Handling', () => {
+describe('The "Flaky" DOM & Logic Challenge', () => {
   beforeEach(() => {
     cy.visit('/dynamic_controls')
   })

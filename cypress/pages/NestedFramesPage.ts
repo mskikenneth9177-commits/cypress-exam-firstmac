@@ -1,15 +1,7 @@
-// cypress/pages/NestedFramesPage.ts
-
 export class NestedFramesPage {
-  url = 'https://the-internet.herokuapp.com/nested_frames'
-
   visit() {
-    cy.visit(this.url)
+    cy.visit('/nested_frames')
   }
-
-  /**
-   * Safely get the MIDDLE frame body with retryable Cypress commands
-   */
   getMiddleFrameBody(): Cypress.Chainable<JQuery<HTMLElement>> {
     return cy.get('frame[name="frame-top"]').then(($top) => {
       const topFrame = $top[0] as unknown as HTMLIFrameElement
@@ -34,9 +26,6 @@ export class NestedFramesPage {
     })
   }
 
-  /**
-   * Assert that MIDDLE frame contains expected text
-   */
   assertMiddleText(expectedText: string) {
     this.getMiddleFrameBody().should('contain.text', expectedText)
   }
