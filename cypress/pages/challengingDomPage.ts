@@ -1,4 +1,12 @@
+export type ColorButton = 'Red' | 'Blue' | 'Green'
+
 export class ChallengingDomPage {
+  private readonly colorButtons = {
+    Red: '.button.alert',
+    Blue: '.button:not(.alert):not(.success)',
+    Green: '.button.success',
+  }
+
   visit() {
     cy.visit('/challenging_dom')
   }
@@ -13,14 +21,19 @@ export class ChallengingDomPage {
     })
   }
 
-  clickButton(buttonClass: string) {
-    return cy.get(buttonClass).click()
+  clickColorButton(color: ColorButton) {
+    cy.get(this.colorButtons[color])
+      .first()
+      .click()
   }
 
-  getAnswerFromScript() {
-    return cy.get('#content > script').invoke('text').then((scriptText) => {
+  getAnswerFromScript(): Cypress.Chainable<string> {
+  return cy
+    .get('#content > script')
+    .invoke('text')
+    .then((scriptText: string) => {
       const match = scriptText.match(/Answer:\s(\d+)/)
-      return match ? match[1] : null
+      return match ? match[1] : ''
     })
-  }
+}
 }

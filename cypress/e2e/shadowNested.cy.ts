@@ -1,18 +1,21 @@
+import { SeniorTwistPage } from '../pages/ShadowDOMMulti-FramePage'
 
-import { ShadowDomPage } from '../pages/ShadowDomPage'
-import { NestedFramesPage } from '../pages/NestedFramesPage'
+describe('Senior Twist: Shadow DOM & Nested Frames', () => {
+  const page = new SeniorTwistPage()
 
-describe('Shadow DOM & Nested Frames Tests', () => {
-  const shadowPage = new ShadowDomPage()
-  const nestedPage = new NestedFramesPage()
-
-  it('Should assert shadow DOM text', () => {
-    shadowPage.visit()
-    shadowPage.assertShadowText("Let's have some different text!")
+  it('Assert text in Shadow DOM', () => {
+    page.visitShadowDom()
+    page.assertText("Let's have some different text!", {
+      shadow: true,
+      selector: 'span[slot="my-text"]'
+    })
   })
 
-  it('Should assert MIDDLE text in nested frame', () => {
-    nestedPage.visit()
-    nestedPage.assertMiddleText('MIDDLE')
+  it('Assert text in MIDDLE nested frame', () => {
+    page.visitNestedFrames()
+    page.assertText('MIDDLE', {
+      framePath: ['frame-top', 'frame-middle'],
+      selector: '#content' 
+    })
   })
 })

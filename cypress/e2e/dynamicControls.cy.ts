@@ -7,11 +7,11 @@ describe('Dynamic Controls', () => {
     page.visit()
   })
 
-  it('removes checkbox dynamically', () => {
+  it('Requirement 1 and 2 removes checkbox dynamically and assesrt its gone', () => {
     page.removeCheckbox()
   })
 
-  it('enables input dynamically', () => {
+  it('Requirement 3 enables input dynamically', () => {
     page.enableInput('Cypress Challenge')
   })
 })

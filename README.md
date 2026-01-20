@@ -14,6 +14,12 @@ cd repo-name
 
 npm install
 
+# Install cypress-iframe (required for Nested Frames tests)
+npm install -D cypress-iframe
+
+# Import cypress-iframe in cypress/support/commands.ts (or your test file):
+import 'cypress-iframe';
+
 # Open Cypress - 
 
 npx cypress open
@@ -24,3 +30,10 @@ npx cypress open
 # example wanted to run shadow nested - npx cypress run --spec "cypress/e2e/shadowNested.cy.ts"
 
 npx cypress run --spec "cypress/e2e/challengingDom.cy.ts"
+
+
+Notes
+
+All tests are written in TypeScript for type safety.
+
+Ensure all dependencies, including cypress-iframe, are installed before running the tests.

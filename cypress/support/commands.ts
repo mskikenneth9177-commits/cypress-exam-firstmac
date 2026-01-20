@@ -3,6 +3,9 @@
 // -----------------------------
 // Dynamic Controls Commands
 // -----------------------------
+
+import 'cypress-iframe'
+
 Cypress.Commands.add('removeCheckbox', () => {
   cy.get('#checkbox').should('exist')
   cy.contains('button', 'Remove').click()
