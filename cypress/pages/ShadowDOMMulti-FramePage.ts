@@ -16,6 +16,19 @@ export class SeniorTwistPage {
 // - options.framePath: array of frame names for nested frames
 // - options.selector: optional CSS selector to narrow down the search
 
+  assertShadowText(expectedText: string) {
+    this.assertText(expectedText, {
+      shadow: true,
+      selector: 'span[slot="my-text"]'
+    })
+  }
+
+  assertMiddleText(expectedText: string) {
+    this.assertText(expectedText, {
+      framePath: ['frame-top', 'frame-middle'],
+      selector: '#content'
+    })
+  }
 
   assertText(
     expectedText: string,
@@ -38,7 +51,7 @@ export class SeniorTwistPage {
   }
 
   //helper for nested frames using cypress-iframe 
-  
+
   private assertTextInFrames(
     framePath: string[],
     expectedText: string,

@@ -3,19 +3,13 @@ import { SeniorTwistPage } from '../pages/ShadowDOMMulti-FramePage'
 describe('Senior Twist: Shadow DOM & Nested Frames', () => {
   const page = new SeniorTwistPage()
 
-  it('Assert text in Shadow DOM', () => {
+  it('Requirement 1 should find text inside Shadow DOM', () => {
     page.visitShadowDom()
-    page.assertText("Let's have some different text!", {
-      shadow: true,
-      selector: 'span[slot="my-text"]'
-    })
+    page.assertShadowText("Let's have some different text!")
   })
 
-  it('Assert text in MIDDLE nested frame', () => {
+  it('Requiirement 2 should find text inside MIDDLE nested frame', () => {
     page.visitNestedFrames()
-    page.assertText('MIDDLE', {
-      framePath: ['frame-top', 'frame-middle'],
-      selector: '#content' 
-    })
+    page.assertMiddleText('MIDDLE')
   })
 })
